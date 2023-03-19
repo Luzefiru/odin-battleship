@@ -92,6 +92,7 @@ function Gameboard() {
   return {
     getShipDict,
     getGrid,
+    getShotsGrid,
     placeShip,
     canReceiveAttack,
     receiveAttack,
