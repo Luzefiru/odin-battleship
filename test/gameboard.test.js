@@ -59,4 +59,23 @@ describe('Gameboard Factory Function methods', () => {
     testGameboard.receiveAttack(wrongRow, column);
     expect(testGameboard.getGrid()[wrongRow][column]).toBe('miss');
   });
+
+  it('isAllSunk() should return true on a 1-ship grid with 1 sunken ship', () => {
+    const row = 0;
+    const column = 1;
+    testGameboard.placeShip(testShip, row, column);
+    testGameboard.receiveAttack(row, column);
+    testGameboard.receiveAttack(row, column + 1);
+    testGameboard.receiveAttack(row, column + 2);
+    expect(testGameboard.isAllSunk()).toBeTruthy();
+  });
+
+  it('isAllSunk() should return false on a 1-ship grid with no sunken ships', () => {
+    const row = 0;
+    const column = 1;
+    testGameboard.placeShip(testShip, row, column);
+    testGameboard.receiveAttack(row, column);
+    testGameboard.receiveAttack(row, column + 1);
+    expect(testGameboard.isAllSunk()).toBeFalsy();
+  });
 });

@@ -58,7 +58,17 @@ function Gameboard() {
     return hitFlag;
   };
 
-  return { getShipDict, getGrid, placeShip, receiveAttack };
+  const isAllSunk = () => {
+    let allSunkFlag = true;
+    for (let ship in _shipDict) {
+      if (_shipDict[ship].isSunk() === false) {
+        return false;
+      }
+    }
+    return allSunkFlag;
+  };
+
+  return { getShipDict, getGrid, placeShip, receiveAttack, isAllSunk };
 }
 
 export { Gameboard };
