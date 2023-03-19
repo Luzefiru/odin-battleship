@@ -68,6 +68,7 @@ footer > a {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .cell:not(.hit, .grid--player__cell):hover {
@@ -96,6 +97,7 @@ footer > a {
   color: rgb(255, 74, 74);
   font-size: 32px;
   font-weight: 800;
+  position: absolute;
 }
 
 /* announcement styles */

@@ -7,9 +7,8 @@ const viewModule = (function () {
     let cellCtr;
     // renders player's board
     rowCtr = 0;
-    cellCtr = 0;
     for (let row of player.getBoard().getGrid()) {
-      console.log(row);
+      cellCtr = 0;
       for (let cell of row) {
         const newCell = document.createElement('div');
         newCell.classList.add('grid--player__cell', 'cell');
@@ -33,8 +32,8 @@ const viewModule = (function () {
 
     // renders enemy's board
     rowCtr = 0;
-    cellCtr = 0;
     for (let row of enemy.getBoard().getGrid()) {
+      cellCtr = 0;
       for (let cell of row) {
         const newCell = document.createElement('div');
         newCell.classList.add('grid--enemy_cell', 'cell');
@@ -44,6 +43,17 @@ const viewModule = (function () {
             newCell.classList.add('confirm');
           }
           newCell.classList.add('hit');
+        }
+
+        newCell.id = `${rowCtr}-${cellCtr}`;
+
+        // if it wasn't hit
+        if (!newCell.classList.contains('hit')) {
+          newCell.addEventListener('click', () => {
+            const x = Number(newCell.id.split('-')[0]);
+            const y = Number(newCell.id.split('-')[1]);
+            console.log(x, y);
+          });
         }
 
         boardOfEnemy.append(newCell);
