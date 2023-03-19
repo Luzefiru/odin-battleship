@@ -21,6 +21,10 @@ const viewModule = (function () {
           newCell.classList.add('hit');
         }
 
+        if (cell !== 'miss' && cell !== 0) {
+          newCell.classList.add('ship');
+        }
+
         boardOfPlayer.append(newCell);
         cellCtr++;
       }
