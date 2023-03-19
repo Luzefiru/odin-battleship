@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Stardos+Stencil:wght@700&display=swap');
+
 *,
 ::before,
 ::after {
@@ -8,4 +10,45 @@
 
 body, html {
   height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  font-family: 'Stardos Stencil', serif;
+  font-size: 5rem;
+  justify-self: flex-start;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+}
+
+main {
+  height: 100% - 8rem - 1.1rem; /* max height - header - footer */
+  background-color: red;
+  margin: auto;
+}
+
+footer {
+  font-family: 'Golos Text', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+footer > a {
+  display: flex;
+  align-items: center;
+}
+
+section.boards {
+  margin: auto;
 }
