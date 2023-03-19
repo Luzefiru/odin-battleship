@@ -1,4 +1,9 @@
 const viewModule = (function () {
+  const clearBoard = (parent) => {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  };
   const renderBoards = (player, enemy) => {
     const boardOfPlayer = document.querySelector('.grid--player');
     const boardOfEnemy = document.querySelector('.grid--enemy');
@@ -53,6 +58,10 @@ const viewModule = (function () {
             const x = Number(newCell.id.split('-')[0]);
             const y = Number(newCell.id.split('-')[1]);
             console.log(x, y);
+            player.doAttack(enemy, x, y);
+            clearBoard(boardOfPlayer);
+            clearBoard(boardOfEnemy);
+            renderBoards(player, enemy);
           });
         }
 
@@ -63,7 +72,7 @@ const viewModule = (function () {
     }
   };
 
-  return { renderBoards };
+  return { clearBoard, renderBoards };
 })();
 
 export { viewModule };
