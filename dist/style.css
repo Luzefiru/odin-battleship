@@ -92,6 +92,10 @@ footer > a {
   background-color: rgb(94, 94, 162);
 }
 
+.cell.confirm.ship::before {
+  background-color: rgb(128, 128, 128)
+}
+
 .hit.confirm::after {
   content: '✖';
   color: rgb(255, 74, 74);
