@@ -1,4 +1,5 @@
 import { Gameboard } from './gameboard';
+import { Ship } from '../src/ship';
 
 function Player(name) {
   const _name = name;
@@ -16,7 +17,12 @@ function Player(name) {
     return shotFlag;
   };
 
-  return { getName, getBoard, doAttack };
+  const deployShip = (shipLength, row, col) => {
+    // returns true on successful deployment
+    return _board.placeShip(Ship(shipLength), row, col);
+  };
+
+  return { getName, getBoard, doAttack, deployShip };
 }
 
 function Computer() {
@@ -39,7 +45,12 @@ function Computer() {
     return shotFlag;
   };
 
-  return { getBoard, doRandomAttack };
+  const deployShip = (shipLength, row, col) => {
+    // returns true on successful deployment
+    return _board.placeShip(Ship(shipLength), row, col);
+  };
+
+  return { getBoard, doRandomAttack, deployShip };
 }
 
 export { Player, Computer };

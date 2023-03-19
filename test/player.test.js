@@ -78,4 +78,17 @@ describe('Computer Factory Function methods', () => {
     const hitFlag = player.doAttack(computer, 0, 0);
     expect(hitFlag).toBeFalsy();
   });
+
+  it('deployShip() should add a ship to the respective player board', () => {
+    player.deployShip(5, 0, 1);
+    expect(player.getBoard().getGrid()).toEqual([
+      [0, 5, 5, 5, 5, 5, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+    ]);
+  });
 });
