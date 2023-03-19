@@ -6,7 +6,17 @@ function Player(name) {
   const getName = () => _name;
   const getBoard = () => _board;
 
-  return { getName, getBoard };
+  const doAttack = (enemy, row, col) => {
+    let shotFlag = false;
+    const enemyBoard = enemy.getBoard();
+    if (enemyBoard.canReceiveAttack(row, col) === true) {
+      enemyBoard.receiveAttack(row, col);
+      shotFlag = true;
+    }
+    return shotFlag;
+  };
+
+  return { getName, getBoard, doAttack };
 }
 
 function Computer() {

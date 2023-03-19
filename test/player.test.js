@@ -54,4 +54,28 @@ describe('Computer Factory Function methods', () => {
     }
     expect(hitCount).toBe(49);
   });
+
+  it('a call to doAttack() should make a Computer board cell get hit once', () => {
+    player.doAttack(computer, 0, 0);
+    let hitCount = 0;
+    for (let row of computer.getBoard().getShotsGrid()) {
+      for (let cell of row) {
+        if (cell === 1) {
+          hitCount++;
+        }
+      }
+    }
+    expect(hitCount).toBe(1);
+  });
+
+  it('players should be able to doAttack() on a cell', () => {
+    const hitFlag = player.doAttack(computer, 0, 0);
+    expect(hitFlag).toBeTruthy();
+  });
+
+  it('players should not doAttack() on an already hit cell', () => {
+    player.doAttack(computer, 0, 0);
+    const hitFlag = player.doAttack(computer, 0, 0);
+    expect(hitFlag).toBeFalsy();
+  });
 });
