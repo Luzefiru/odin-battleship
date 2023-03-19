@@ -17,21 +17,25 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: 'Golos Text', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header {
   font-family: 'Stardos Stencil', serif;
   font-size: 5rem;
-  justify-self: flex-start;
-  height: 8rem;
+  height: 6rem;
   display: flex;
-  align-items: center;
+  align-items: stretch;
 }
 
 main {
-  height: 100% - 8rem - 1.1rem; /* max height - header - footer */
-  background-color: red;
-  margin: auto;
+  margin: 1rem;
+  height: calc(100% - 6rem - 1.1rem); /* max height - header - footer */
+  background-color: rgb(239, 239, 239);
+  border-radius: 24px;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  align-items: center;
 }
 
 footer {
@@ -49,6 +53,43 @@ footer > a {
   align-items: center;
 }
 
-section.boards {
+/* grid styles */
+
+.grid {
+  padding: 0 7rem;
+  height: 100%;
+  width: 50%;
+  display: grid;
+  grid-template: repeat(7, 3rem) / repeat(7, 3rem);
+}
+
+.cell {
+  background-color: pink;
+  border: 1px black dashed;
+}
+
+.grids-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* announcement styles */
+
+.announcements {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  align-self: start;
+}
+
+.announcements__main {
+  font-weight: 500;
+  font-size: 3rem;
   margin: auto;
+}
+
+.announcements__subtext {
+  font-style: italic;
 }
