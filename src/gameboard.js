@@ -15,7 +15,17 @@ function Gameboard() {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
   ];
+  const _shotsGrid = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+  ];
   const getGrid = () => _grid;
+  const getShotsGrid = () => _shotsGrid;
 
   const _canPlaceShip = (ship, row, col) => {
     const length = ship.getLength();
@@ -45,6 +55,13 @@ function Gameboard() {
     return true;
   };
 
+  const canReceiveAttack = (row, col) => {
+    if (_shotsGrid[row][col] === 0) {
+      return true;
+    }
+    return false;
+  };
+
   const receiveAttack = (row, col) => {
     let hitFlag = false;
     // if the grid cell is occupied by a ship length (denotes the ship class),
@@ -55,6 +72,9 @@ function Gameboard() {
     } else if (getGrid()[row][col] === 0) {
       getGrid()[row][col] = 'miss';
     }
+    // record the shot to prevent future shots in the same area
+    _shotsGrid[row][col] = 1;
+
     return hitFlag;
   };
 
@@ -69,7 +89,14 @@ function Gameboard() {
     return allSunkFlag;
   };
 
-  return { getShipDict, getGrid, placeShip, receiveAttack, isAllSunk };
+  return {
+    getShipDict,
+    getGrid,
+    placeShip,
+    canReceiveAttack,
+    receiveAttack,
+    isAllSunk,
+  };
 }
 
 export { Gameboard };

@@ -41,6 +41,21 @@ describe('Gameboard Factory Function methods', () => {
     expect(testGameboard.getShipDict()[length]).toEqual(testShip);
   });
 
+  it('canReceiveAttack() should return false when the cell is already shot at', () => {
+    const row = 0;
+    const column = 1;
+    testGameboard.placeShip(testShip, row, column);
+    testGameboard.receiveAttack(row, column);
+    expect(testGameboard.canReceiveAttack(row, column)).toBeFalsy();
+  });
+
+  it('canReceiveAttack() should return true can be shot at', () => {
+    const row = 0;
+    const column = 1;
+    testGameboard.placeShip(testShip, row, column);
+    expect(testGameboard.canReceiveAttack(row, column)).toBeTruthy();
+  });
+
   it("receiveAttack() should update the corresponding ship's hit counter in _shipDict", () => {
     const row = 0;
     const column = 1;
