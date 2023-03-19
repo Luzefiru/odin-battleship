@@ -4,6 +4,12 @@ const viewModule = (function () {
       parent.removeChild(parent.firstChild);
     }
   };
+  const displayMessage = (main, subtext) => {
+    const mainText = document.querySelector('.announcements__main');
+    const subText = document.querySelector('.announcements__subtext');
+    mainText.textContent = main;
+    subText.textContent = subtext;
+  };
   const renderBoards = (player, enemy) => {
     const boardOfPlayer = document.querySelector('.grid--player');
     const boardOfEnemy = document.querySelector('.grid--enemy');
@@ -58,9 +64,18 @@ const viewModule = (function () {
             const x = Number(newCell.id.split('-')[0]);
             const y = Number(newCell.id.split('-')[1]);
             console.log(x, y);
-            player.doAttack(enemy, x, y);
+            const hitFlag = player.doAttack(enemy, x, y);
+            if (hitFlag) {
+              displayMessage(
+                'You hit a ship!',
+                "Pick a cell in the opponent's board."
+              );
+            } else {
+              displayMessage('You missed!', 'Try again.');
+            }
             clearBoard(boardOfPlayer);
             clearBoard(boardOfEnemy);
+            enemy.doRandomAttack(player);
             renderBoards(player, enemy);
           });
         }
@@ -72,7 +87,7 @@ const viewModule = (function () {
     }
   };
 
-  return { clearBoard, renderBoards };
+  return { displayMessage, clearBoard, renderBoards };
 })();
 
 export { viewModule };

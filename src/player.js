@@ -8,13 +8,12 @@ function Player(name) {
   const getBoard = () => _board;
 
   const doAttack = (enemy, row, col) => {
-    let shotFlag = false;
+    let hitFlag = false;
     const enemyBoard = enemy.getBoard();
     if (enemyBoard.canReceiveAttack(row, col) === true) {
-      enemyBoard.receiveAttack(row, col);
-      shotFlag = true;
+      hitFlag = enemyBoard.receiveAttack(row, col);
     }
-    return shotFlag;
+    return hitFlag;
   };
 
   const deployShip = (shipLength, row, col) => {
