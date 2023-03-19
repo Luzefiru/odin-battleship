@@ -61,6 +61,7 @@ function Gameboard() {
   const isAllSunk = () => {
     let allSunkFlag = true;
     for (let ship in _shipDict) {
+      // exit early if a ship is not yet sunk
       if (_shipDict[ship].isSunk() === false) {
         return false;
       }
