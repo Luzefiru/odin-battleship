@@ -52,6 +52,8 @@ function Gameboard() {
     if (getGrid()[row][col] !== 0) {
       hitFlag = true;
       _shipDict[getGrid()[row][col]].hit();
+    } else if (getGrid()[row][col] === 0) {
+      getGrid()[row][col] = 'miss';
     }
     return hitFlag;
   };

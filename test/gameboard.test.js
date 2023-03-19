@@ -49,4 +49,14 @@ describe('Gameboard Factory Function methods', () => {
     testGameboard.receiveAttack(row, column);
     expect(testGameboard.getShipDict()[length].getTimesHit()).toBe(1);
   });
+
+  it('testGameboard should take note of missed shots after receiveAttack()', () => {
+    const row = 0;
+    const column = 1;
+    const wrongRow = 2;
+    const length = testShip.getLength();
+    testGameboard.placeShip(testShip, row, column);
+    testGameboard.receiveAttack(wrongRow, column);
+    expect(testGameboard.getGrid()[wrongRow][column]).toBe('miss');
+  });
 });
