@@ -84,7 +84,7 @@ footer > a {
   justify-content: center;
 }
 
-.hit::after {
+.hit.confirm::after {
   content: '✖';
   color: rgb(255, 74, 74);
   font-size: 32px;
