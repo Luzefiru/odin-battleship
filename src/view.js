@@ -76,6 +76,12 @@ const viewModule = (function () {
             clearBoard(boardOfPlayer);
             clearBoard(boardOfEnemy);
             enemy.doRandomAttack(player);
+            if (enemy.getBoard().isAllSunk()) {
+              displayMessage('You win!', 'Refresh the page to play again.');
+            }
+            if (player.getBoard().isAllSunk()) {
+              displayMessage('You lose!', 'Refresh the page to play again.');
+            }
             renderBoards(player, enemy);
           });
         }
