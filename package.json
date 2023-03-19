@@ -4,7 +4,7 @@
   "description": "A web implementation for the game Battleship developed using Test Driven Development.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll --verbose",
     "build": "webpack --progress --mode=production",
     "watch": "webpack --progress --watch --mode=development"
   },
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Luzefiru/odin-battleship#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "jest": "^29.5.0",
     "prettier": "^2.8.4",
     "webpack": "^5.76.2",
     "webpack-cli": "^5.0.1"
